@@ -70,7 +70,7 @@ import LeaderBoard from "./components/reward/leaderBoard";
 function App() {
     return (
         <Web3ContextProvider>
-            <MoralisProvider appId="NJ1W87vymMj9zzQlqMtkzozp1mCyLfu3DBIa7QLr" serverUrl="https://4vhrdliui0o0.usemoralis.com:2053/server">
+            <MoralisProvider appId={process.env.REACT_APP_MORALIS_ID} serverUrl={process.env.REACT_APP_MORALIS_SERVER}>
                 <BrowserRouter basename={'/'}>
                   
                     <Switch>

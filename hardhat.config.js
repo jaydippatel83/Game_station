@@ -1,10 +1,9 @@
 require("@nomiclabs/hardhat-waffle");
 
 const fs = require("fs");
-const privateKey =
-  "8cd2a5e9fa83d1153cfbdcb791cad4e2e030dc05175457daff4e371475e8e321";
-const ALCHEMY_API_KEY = "pqr-VAfSii011IkFlqrZTxCgzK5fWegs";
-const projectId = "0625a19e9662496eac15a4d713be4eb9";
+const privateKey = process.env.REACT_APP_PRIVATE_KEY; 
+const ALCHEMY_API_KEY =  process.env.REACT_APP_ALCHEMY_API_KEY; 
+const projectId =process.env.REACT_APP_PROJECT_ID;
 
 module.exports = {
   solidity: "0.8.4",
