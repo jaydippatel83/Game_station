@@ -1,9 +1,6 @@
 import React, { Component, Fragment, useEffect, useState } from "react";
-import Header from '../components/Header';
-import Leftnav from '../components/Leftnav';
-import Rightchat from '../components/Rightchat';
-import Appfooter from '../components/Appfooter';
-import Popupchat from '../components/Popupchat';
+import Header from '../components/Header';  
+import Appfooter from '../components/Appfooter'; 
 import { useLocation } from "react-router-dom";
 import moment from 'moment'
 import { useMoralis, useMoralisFile } from "react-moralis";
@@ -52,9 +49,7 @@ function Chat() {
 
     return (
         <Fragment>
-            <Header />
-            <Leftnav />
-            <Rightchat />
+            <Header />  
 
             <div className="main-content right-chat-active">
                 <div className="middle-sidebar-bottom">
@@ -121,8 +116,7 @@ function Chat() {
                     </div>
                 </div>
             </div>
-
-            <Popupchat />
+ 
             <Appfooter />
 
         </Fragment>

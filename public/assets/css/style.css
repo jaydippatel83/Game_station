@@ -94,19 +94,19 @@
 }
 
 .theme-dark {
-  background-color: #1a2236;
+  background-color: #1B1A17;
 }
 .theme-dark .app-content {
-  background-color: #1a2236;
+  background-color: #1B1A17;
 }
 .theme-dark .app-content:before {
   background-color: rgba(0, 0, 0, 0.9);
 }
 .theme-dark .card {
-  background-color: #293145 !important;
+  background-color: #000 !important;
 }
 .theme-dark .app-footer {
-  background-color: #293145 !important;
+  background-color: #000 !important;
   border-top: 0;
 }
 .theme-dark .app-footer i {
@@ -246,11 +246,7 @@
 }
 
 .bg-primary-gradiant {
-  background: linear-gradient(
-    135deg,
-    var(--theme-color),
-    var(--theme-color-shade)
-  ) !important;
+  background: linear-gradient(to right, #FFD32D, #FFC300) !important;
 }
 
 .bg-gold-gradiant {
@@ -1432,13 +1428,13 @@
 }
 
 .theme-dark {
-  background-color: #132977;
+  background-color: #1B1A17 ;
 }
 .theme-dark .middle-sidebar-header,
 .theme-dark .middle-sidebar-right-content,
 .theme-dark .nav-header,
 .theme-dark .navigation {
-  background-color: #293145 !important;
+  background-color: #000 !important;
   box-shadow: none !important;
 }
 .theme-dark .navigation .nav-content ul li:not(.logo) a span {
@@ -1449,7 +1445,7 @@
 }
 .theme-dark .scroll-bar::-webkit-scrollbar,
 .theme-dark .scroll-bar::-webkit-scrollbar-track {
-  background-color: #1a2236 !important;
+  background-color: #1B1A17 !important;
 }
 .theme-dark .main-content .middle-sidebar-header .header-menu:before,
 .theme-dark .main-content .middle-sidebar-header .header-menu:after {
@@ -1476,7 +1472,7 @@
 .theme-dark .input-file + .js-labelFile.btn-tertiary,
 .theme-dark .modal-popup-chat .modal-popup-wrap,
 .theme-dark .theme-dark-bg {
-  background-color: #1a2236 !important;
+  background-color: #1B1A17 !important;
 }
 .theme-dark .theme-light-bg {
   background-color: #132977 !important;
@@ -1492,7 +1488,7 @@
   border-color: var(--theme-color);
 }
 .theme-dark .dropdown-menu-settings:after {
-  border-color: transparent transparent #1a2236 transparent;
+  border-color: transparent transparent #1B1A17 transparent;
 }
 .theme-dark .bg-transparent-card {
   background: transparent !important;
@@ -1500,11 +1496,11 @@
 .theme-dark .notification-dropdown,
 .theme-dark .dropdown-menu-settings,
 .theme-dark .main-content {
-  background-color: #1a2236;
+  background-color: #1B1A17;
 }
 .theme-dark .form-group.bg-white {
   border: 0 !important;
-  background-color: #1a2236 !important;
+  background-color: #1B1A17 !important;
 }
 .theme-dark
   .main-content
@@ -1517,7 +1513,7 @@
   .left-sidebar-content
   .left-sidebar-bottom,
 .theme-dark .main-content .left-sidebar .left-sidebar-content {
-  background-color: #293145 !important;
+  background-color: #000 !important;
 }
 .theme-dark .apexcharts-datalabel-value {
   fill: #eee;
@@ -1545,7 +1541,7 @@
 .theme-dark .accordion .card .card-body,
 .theme-dark .accordion .card .card-header,
 .theme-dark .form-div {
-  background-color: #293145;
+  background-color: #1B1A17;
 }
 .theme-dark .header-wrapper .logo {
   color: lightsteelblue;
@@ -1576,7 +1572,7 @@
   color: #fff;
 }
 .theme-dark .card-header {
-  border-bottom: 0 solid #000;
+  border-bottom: 0 solid #1B1A17;
 }
 .theme-dark .dark-bg-transparent {
   background-color: transparent !important;
@@ -1587,13 +1583,13 @@
 }
 .theme-dark .form-group label.text-dark-color,
 .theme-dark .text-dark-color {
-  color: #111 !important;
+  color: #1B1A17 !important;
 }
 .theme-dark .bor-0 {
   border: 0 !important;
 }
 .theme-dark .chatlist.style2 .item img {
-  border: 2px #1a2236 solid;
+  border: 2px #1B1A17 solid;
 }
 .theme-dark .card-body.border-top-xs {
   border-top: 1px solid #555;
@@ -6023,7 +6019,7 @@ fieldset:disabled .btn {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 1px solid #1B1A17;
   border-radius: 0.25rem;
 }
 .card > hr {
@@ -9194,7 +9190,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-  background-color: #1e74fd !important;
+  background-color: #1B1A17 !important;
 }
 
 .bg-secondary {

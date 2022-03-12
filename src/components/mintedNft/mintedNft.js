@@ -1,12 +1,9 @@
 import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useMoralis } from 'react-moralis';
-import { mintNftAddres, socialAddress, tokenAddres } from '../../config'
+import { mintNftAddres, tokenAddres } from '../../config'
 import Appfooter from '../Appfooter';
-import Header from '../Header';
-import Leftnav from '../Leftnav';
-import Popupchat from '../Popupchat';
-import Rightchat from '../Rightchat';
+import Header from '../Header';   
 import SkeletonCard from '../skeleton/Card'; 
 
 function MintedNft() {
@@ -70,9 +67,7 @@ function MintedNft() {
     return (
 
         <Fragment>
-            <Header />
-            <Leftnav />
-            <Rightchat />
+            <Header />  
 
             <div className="main-content right-chat-active">
                 <div className="middle-sidebar-bottom">
@@ -118,8 +113,7 @@ function MintedNft() {
                     </div>
                 </div>
             </div>
-
-            <Popupchat />
+ 
             <Appfooter />
 
         </Fragment >

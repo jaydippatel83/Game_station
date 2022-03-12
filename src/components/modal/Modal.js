@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useMoralis, useChain, useNewMoralisObject, useMoralisFile, useWeb3ExecuteFunction } from 'react-moralis';
 import { ToastContainer, toast } from 'react-toastify';
-import { tokenAddres, socialAddress } from '../../config';
+import { tokenAddres } from '../../config';
 
 import TokenAbi from '../../abi/Token.json';
 import PostAbi from '../../abi/Post.json';
@@ -82,7 +82,7 @@ export default function CreatePostModal() {
 
     async function mintPublishPost() {
         if (!discription) {
-            toast.error("This field is require!");
+            toast.error("All the fields are require!");
             return;
         }
         const data = {
@@ -189,7 +189,7 @@ export default function CreatePostModal() {
                         />
                     </div>
                 </Modal.Body>
-                <Modal.Footer className='card'>
+                <Modal.Footer className='card d-flex justify-content-center'>
                     <button style={{border:'none',}} className="p-2  bg-primary-gradiant  me-2 text-white text-center font-xssss fw-600 ls-1 rounded border-none" onClick={publishPost}>
                         Publish
                     </button>

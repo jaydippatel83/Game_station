@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { List, TextField } from '@mui/material';
 import { Button, Modal } from 'react-bootstrap';
 import { useNewMoralisObject, useMoralisCloudFunction, useMoralis } from 'react-moralis';
-import { socialAddress } from '../../config';
+// import { socialAddress } from '../../config';
 import { toast, ToastContainer } from 'react-toastify';
 import Load from '../Load';
 import { BigNumber, ethers } from 'ethers';

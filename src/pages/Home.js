@@ -1,13 +1,10 @@
 import React, { Component, Fragment, useEffect } from "react";
 import Friends from '../components/Friends';
-import Contacts from '../components/Contacts';
-import Friendsilder from '../components/Friendsilder';
+import Contacts from '../components/Contacts'; 
 import Postview from '../components/post/Postview';
 import Load from '../components/Load';
 import { useMoralis } from 'react-moralis';
-import Header from '../components/Header'
-import Leftnav from '../components/Leftnav';
-import Rightchat from '../components/Rightchat';
+import Header from '../components/Header'  
 
 function Home() {
     const { Moralis, user } = useMoralis();
@@ -36,16 +33,13 @@ function Home() {
 
     return (
         <Fragment>
-            <Header />
-            <Leftnav />
-            <Rightchat />
+            <Header />  
             <div className="main-content right-chat-active">
                 <div className="middle-sidebar-bottom">
                     <div className="middle-sidebar-left">
                         <div className="row feed-body">
                             <div className="col-xl-8 col-xxl-9 col-lg-8">
-                                <Postview />
-                                {/* <Friendsilder /> */}
+                                <Postview /> 
                                 <Load />
                             </div>
                             <div className="col-xl-4 col-xxl-3 col-lg-4 ps-lg-0">
