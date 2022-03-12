@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useMoralis, useChain, useNewMoralisObject, useMoralisFile, useWeb3ExecuteFunction } from 'react-moralis';
 import { ToastContainer, toast } from 'react-toastify';
-import { tokenAddres } from '../../config';
+import { tokenAddres, marketAddress } from '../../config';
 
 import TokenAbi from '../../abi/Token.json';
-import PostAbi from '../../abi/Post.json';
+import MarketAbi from '../../abi/Market.json';
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import web3 from "web3";
@@ -24,7 +24,8 @@ export default function CreatePostModal() {
     const handleClose = () => setShow(false);
     const [avatar, setAvatar] = useState(null);
     const [discription, setdiscription] = useState("");
-    const [tags, setTags] = useState("");
+    const [title, setTitle] = useState("");
+    const [price, setPrice] = useState(0);
     const [userId, setUserId] = useState("");
     const [isUpdated, setIsupdated] = useState(false);
 
@@ -57,9 +58,10 @@ export default function CreatePostModal() {
             return;
         }
         const saveData = {
-            title: discription,
+            title: title,
+            discription : discription,
             postImage: avatar,
-            tag: tags,
+            price: price,
         }
 
         await save({ saveData, user });
@@ -85,12 +87,19 @@ export default function CreatePostModal() {
             toast.error("All the fields are require!");
             return;
         }
-        const data = {
-            title: discription,
+        // const data = {
+        //     title: discription,
+        //     postImage: avatar,
+        //     tag: tags,
+        //     address: user.attributes.ethAddress,
+        // };
+
+        const  data = {
+            title: title,
+            discription : discription,
             postImage: avatar,
-            tag: tags,
-            address: user.attributes.ethAddress,
-        };
+            price: price,
+        }
 
         const file = new Moralis.File("data.json", { base64: btoa(JSON.stringify(data)) });
         const dataUri = await file.saveIPFS();
@@ -101,43 +110,34 @@ export default function CreatePostModal() {
 
         const signer = provider.getSigner();
 
+
         let contract = new ethers.Contract(tokenAddres, TokenAbi.abi, signer);
+    let transaction = await contract.createToken(uri);
+    let tx = await transaction.wait();
+    let event = tx.events[0];
+    let value = event.args[2];
+    let tokenId = value.toNumber();
+    const pr = web3.utils.toWei(price, "ether"); 
+    const listingPrice = web3.utils.toWei("0.1", "ether");
 
-        let transaction = await contract.createToken(uri);
+    contract = new ethers.Contract(marketAddress, MarketAbi.abi, signer);
+    transaction = await contract.createMarketItem(tokenAddres, tokenId, pr, {
+      value: listingPrice,
+    });
 
-        let tx = await transaction.wait();
-        let event = tx.events[0];
-        let value = event.args[2];
-        let tokenId = value.toNumber();
-
-        contract = new ethers.Contract(socialAddress, PostAbi.abi, signer);
-        transaction = await contract.createPost(uri, tokenId);
-        await transaction.wait();
+    await transaction.wait();  
 
         const saveData = {
             title: discription,
-            postImage: avatar,
-            tag: tags,
+            postImage: avatar, 
             uri: uri,
             tokenId: tokenId,
             address: user.attributes.ethAddress,
         }
-        await save({ saveData, user });
-
-        if (user) {
-            userQuery.equalTo("user", user.id);
-            const usrpoint = await userQuery.first();
-
-            if (usrpoint.attributes.MintNFT != undefined && usrpoint.attributes.MintNFT != null) {
-                usrpoint.set("MintNFT", 10 + usrpoint.attributes.MintNFT);
-            } else {
-                usrpoint.set("MintNFT", 10);
-            }
-            usrpoint.set("user", user.id);
-            await usrpoint.save();
-        }
+        await save({ saveData, user }); 
+      
         setIsupdated(!isUpdated);
-        toast.success("Successfully created Your Post!!")
+        toast.success("Successfully Mint Your NFT!!")
         setShow(false); 
     }
 
@@ -157,18 +157,20 @@ export default function CreatePostModal() {
                     <Modal.Title className='h4'>Create Post</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='card'>
+                <div className="form-group icon-input ">
+                        <input
+                            type="text"
+                            onChange={(e) => setTitle(e.target.value)}
+                            className=" h4 bor-0 w-100 rounded-xxl p-2 ps-3 font-xssss text-grey-900 fw-500 border-light-md theme-dark-bg"
+                            placeholder="Enter Title"
+                        />
+                    </div>
                     <div className="card-body p-0 mt-3 position-relative">
                         <figure className="avatar position-absolute ms-2 mt-1 top-5"><img src={"assets/images/user.png"} alt="icon" className="shadow-sm rounded-circle w30" /></figure>
-                        <textarea onChange={(e) => setdiscription(e.target.value)} name="message" className="h20 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg" cols="20" rows="5" placeholder="Share funny moment"></textarea>
+                        <textarea onChange={(e) => setdiscription(e.target.value)} name="message" className="h20 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg" cols="20" rows="4" placeholder="Share Details"></textarea>
                     </div>
-                    <div className="flex items-center gap-3">
-                        {/* <img
-                            className="rounded object-cover h-60 w-full mb-2"
-                            src={avatar == null ? "https://via.placeholder.com/800x950.png" : avatar} width="70%" height="200"
-                        /> */}
-
-
-                        {/* <div className='d-flex '> */}
+                    <div className="flex items-center gap-3"> 
+                       
                         <input type="file" name="file" id="file" className="input-file" onChange={onChangeAvatar} />
                         <label
                             htmlFor="file"
@@ -176,16 +178,17 @@ export default function CreatePostModal() {
                         >
                             <i className="ti-cloud-up large-icon me-3 d-block"></i>
                             <span className="js-fileName">
-                                Upload Meme(PNG, JPG, GIF, MP4.)
+                                Upload Image(PNG, JPG, GIF, MP4.)
                             </span>
                         </label>
-                    </div>
-                    <div className="form-group icon-input mb-3">
+                    </div> 
+                
+                    <div className="form-group icon-input ">
                         <input
-                            type="text"
-                            onChange={(e) => setTags(e.target.value)}
-                            className=" h4 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-900 fw-500 border-light-md theme-dark-bg"
-                            placeholder="#Tags e.g #blockchain #Ether"
+                            type="number"
+                            onChange={(e) => setPrice(e.target.value)}
+                            className=" h4 bor-0 w-100 rounded-xxl p-2 ps-3 font-xssss text-grey-900 fw-500 border-light-md theme-dark-bg"
+                            placeholder="Enter Price in MATIC"
                         />
                     </div>
                 </Modal.Body>

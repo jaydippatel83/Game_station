@@ -13,7 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import CommentList from "./CommentList";
 import { tokenAddres, socialAddress } from "../../config";
 import Web3 from "web3";
-import PostAbi from "../../abi/Post.json";
+import PostAbi from "../../abi/Market.json";
 import TokenAbi from "../../abi/Token.json";
 import { ethers } from "ethers";
 import axios from "axios";
