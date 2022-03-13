@@ -25,8 +25,8 @@ function App() {
   return (
     <Web3ContextProvider>
       <MoralisProvider
-        appId={process.env.REACT_APP_MORALIS_ID}
-        serverUrl={process.env.REACT_APP_MORALIS_SERVER}
+        appId="ATTRcoEJQ5j5s2WJorbCaXziUTpRIAZGMINzyMlI"
+        serverUrl="https://zyjfjeyuilfh.usemoralis.com:2053/server"
       >
         <BrowserRouter basename={"/"}>
           <Switch> 
