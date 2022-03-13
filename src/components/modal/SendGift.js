@@ -57,7 +57,7 @@ function SendGift(props) {
             type: "native",
             amount: Moralis.Units.ETH(amount, "18"),
             receiver: props.data.saveData.address,
-            contractAddress: socialAddress,
+            // contractAddress: socialAddress,
         }
         let result = await Moralis.transfer(options);
 
