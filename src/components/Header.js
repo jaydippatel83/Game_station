@@ -126,7 +126,7 @@ height={100}
                   component="nav"
                   aria-labelledby="nested-list-subheader"
                 >
-                  <ListItemButton onClick={() => navigatePages("/playandearn")}>
+                  <ListItemButton onClick={() => navigatePages("/")}>
                     <ListItemIcon>
                       <FontAwesomeIcon
                         style={{

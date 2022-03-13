@@ -86,14 +86,7 @@ export default function CreatePostModal() {
         if (!discription) {
             toast.error("All the fields are require!");
             return;
-        }
-        // const data = {
-        //     title: discription,
-        //     postImage: avatar,
-        //     tag: tags,
-        //     address: user.attributes.ethAddress,
-        // };
-
+        } 
         const  data = {
             title: title,
             discription : discription,
@@ -104,6 +97,7 @@ export default function CreatePostModal() {
         const file = new Moralis.File("data.json", { base64: btoa(JSON.stringify(data)) });
         const dataUri = await file.saveIPFS();
         const uri = dataUri._ipfs;
+        console.log(uri,"uri");
         const web3Modal = new Web3Modal();
         const connection = await web3Modal.connect();
         const provider = new ethers.providers.Web3Provider(connection);
@@ -111,28 +105,32 @@ export default function CreatePostModal() {
         const signer = provider.getSigner();
 
 
-        let contract = new ethers.Contract(tokenAddres, TokenAbi.abi, signer);
-    let transaction = await contract.createToken(uri);
+    let contract = new ethers.Contract(tokenAddres, TokenAbi.abi, signer); 
+    let transaction = await contract.createToken(uri); 
     let tx = await transaction.wait();
     let event = tx.events[0];
     let value = event.args[2];
-    let tokenId = value.toNumber();
-    const pr = web3.utils.toWei(price, "ether"); 
-    const listingPrice = web3.utils.toWei("0.1", "ether");
-
-    contract = new ethers.Contract(marketAddress, MarketAbi.abi, signer);
+    let tokenId = value.toNumber(); 
+    const pr = web3.utils.toWei(price, "ether");  
+    const listingPrice = web3.utils.toWei("0.1", "ether"); 
+   await  contract.approve(marketAddress,tokenId); 
+    contract = new ethers.Contract(marketAddress, MarketAbi.abi, signer);  
     transaction = await contract.createMarketItem(tokenAddres, tokenId, pr, {
       value: listingPrice,
     });
 
+    
+
     await transaction.wait();  
 
-        const saveData = {
-            title: discription,
+        const saveData = { 
             postImage: avatar, 
             uri: uri,
             tokenId: tokenId,
-            address: user.attributes.ethAddress,
+            address: user.attributes.ethAddress, 
+            title: title,
+            discription : discription, 
+            price: price,
         }
         await save({ saveData, user }); 
       

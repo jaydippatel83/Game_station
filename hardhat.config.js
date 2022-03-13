@@ -1,8 +1,7 @@
-require("@nomiclabs/hardhat-waffle");
- 
-const privateKey = process.env.REACT_APP_PRIVATE_KEY; 
-const ALCHEMY_API_KEY =  process.env.REACT_APP_ALCHEMY_API_KEY; 
-const projectId =process.env.REACT_APP_PROJECT_ID;
+require("@nomiclabs/hardhat-waffle"); 
+const privateKey = 'a3993474ed56a2a6304ae3e920a5cb86d80ccf20adfcec95ff1b6fa276d6ff74';
+const ALCHEMY_API_KEY =  'kEyfNEbM4rjMuoRChtnhAsOyxM4UpIV4';
+const projectId = process.env.REACT_APP_PROJECT_ID;
 
 module.exports = {
   solidity: "0.8.4",
@@ -12,12 +11,6 @@ module.exports = {
       accounts: [privateKey],
       gas: 2100000,
       gasPrice: 8000000000,
-    },
-    ropsten: {
-      url: `https://ropsten.infura.io/v3/${projectId}`,
-      accounts: [privateKey],
-      gas: 2100000,
-      gasPrice: 8000000000,
-    },
+    }, 
   },
 };
