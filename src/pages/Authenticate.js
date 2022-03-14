@@ -79,7 +79,7 @@ export default function Authenticate() {
                 <div className="nav-header bg-transparent shadow-none border-0">
                     <div className="nav-top w-100">
                         <a href="/">
-                        <img  width={250} src="assets/images/logo/logo111.png" alt="SFS" />  
+                        <img  height={100} src="assets/images/logo/gamestation.png" alt="GST" />  
                         </a>
                         <button className="nav-menu me-0 ms-auto"></button>
 
@@ -89,9 +89,9 @@ export default function Authenticate() {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat"
-                        style={{ backgroundImage: `url("	https://firebasestorage.googleapis.com/v0/b/social-network-app-a53f8.appspot.com/o/MicrosoftTeams-image%20(8).png?alt=media&token=49d5dc49-eb88-41a6-945e-823eded89cea` }}></div>
-                    <div className="col-xl-7 vh-100 theme-dark-bg align-items-center d-flex bg-white rounded-3 overflow-hidden">
+                    {/* <div className="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat"
+                        style={{ backgroundImage: `url("	https://firebasestorage.googleapis.com/v0/b/social-network-app-a53f8.appspot.com/o/MicrosoftTeams-image%20(8).png?alt=media&token=49d5dc49-eb88-41a6-945e-823eded89cea` }}></div> */}
+                    <div className="col-xl-8 mx-auto vh-100 theme-dark-bg align-items-center d-flex bg-white rounded-3 overflow-hidden">
                         <div style={{ marginTop: '50px' }} className="card shadow-none border-0 ms-auto me-auto login-card">
                             <div className="card-body rounded-0 text-left">
                                 <h2 className="fw-700 display1-size display2-md-size mb-3">Signup account</h2>

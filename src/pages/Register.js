@@ -87,7 +87,7 @@ function Register() {
                             </span>  */}
 
                             {
-                                themes == 'theme-light' ? <img  width={300} src="assets/images/logo/logo11.png" alt="SFS" /> : <img  width={300} src="assets/images/logo/logo12.png" alt="SFS" />
+                                themes == 'theme-light' ? <img   height={100} src="assets/images/logo/gamestation.png" alt="GST" /> : <img  width={300} src="assets/images/logo/logo12.png" alt="SFS" />
                             }
 
                         </a>
@@ -98,9 +98,9 @@ function Register() {
                     </div>
                 </div>
                 <div className="row mt-3">
-                    <div className="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat"
-                        style={{ backgroundImage: `url("http://sociala.uitheme.net/assets/images/login-bg-2.jpg")` }}></div>
-                    <div style={{marginTop:'50px'}} className="col-xl-7 theme-dark-bg vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
+                    {/* <div className="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat"
+                        style={{ backgroundImage: `url("http://sociala.uitheme.net/assets/images/login-bg-2.jpg")` }}></div> */}
+                    <div style={{marginTop:'50px'}} className="col-xl-8 mx-auto theme-dark-bg vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
                         <div  className="card shadow-none border-0 ms-auto me-auto login-card">
                             <div className="card-body rounded-0 text-left">
                                 <h2 className="fw-700 display1-size display2-md-size mb-4">Create Profile</h2>
